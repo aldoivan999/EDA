@@ -2,8 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Proveedor} from '../proveedor';
 import {AuthService} from '../../usuarios/auth.service';
 import Swal from "sweetalert2";
-import {Entrada} from '../../entrada/models/entrada';
-import {EntradaService} from '../../entrada/entrada.service';
 import {HttpEventType} from '@angular/common/http';
 import {ProveedorService} from '../proveedor.service';
 import {ModalProveedorService} from './modal-proveedor.service';
@@ -24,8 +22,7 @@ export class DetalleProveedorComponent implements OnInit {
 
   constructor(private proveedorService: ProveedorService,
               public authService: AuthService,
-              public modalProveedorService: ModalProveedorService,
-              private entradaService: EntradaService) { }
+              public modalProveedorService: ModalProveedorService) { }
 
   ngOnInit(): void {
   }
@@ -66,45 +63,5 @@ export class DetalleProveedorComponent implements OnInit {
     this.progreso = 0;
   }
 
-  delete(entrada: Entrada): void{
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: 'btn btn-success',
-        cancelButton: 'btn btn-danger'
-      },
-      buttonsStyling: false
-    });
 
-    swalWithBootstrapButtons.fire({
-      title: '¿Estas seguro?',
-      text: `¿Seguro que desea eliminar la entrada ${entrada.descripcion}?`,
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Si, eliminar!',
-      cancelButtonText: 'No, cancelar!',
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.entradaService.delete(entrada.id).subscribe(
-          response => {
-            this.proveedor.entradas = this.proveedor.entradas.filter(e => e !== entrada);
-            swalWithBootstrapButtons.fire(
-              'Entrada Eliminada!',
-              `entrada ${entrada.descripcion} eliminada con éxito.`,
-              'success'
-            );
-          }
-        );
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire(
-          'Cancelado',
-          `entrada ${entrada.descripcion}  no ha sido eliminada.`,
-          'error'
-        );
-      }
-    });
-  }
 }

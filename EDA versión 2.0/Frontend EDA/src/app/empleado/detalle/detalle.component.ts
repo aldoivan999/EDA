@@ -5,8 +5,6 @@ import Swal from 'sweetalert2';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { ModalService } from './modal.service';
-import {FacturaService} from '../../facturas/services/factura.service';
-import {Factura} from '../../facturas/models/factura';
 import {URL_BACKEND} from '../../config/config';
 
 @Component({
@@ -25,8 +23,7 @@ export class DetalleComponent implements OnInit {
   constructor(
   private userService: UserService,
   public authService: AuthService,
-  public modalService: ModalService,
-  private facturaService: FacturaService) { }
+  public modalService: ModalService) { }
 
   ngOnInit(): void {
   }
@@ -67,47 +64,8 @@ export class DetalleComponent implements OnInit {
     this.progreso = 0;
   }
 
-  delete(factura: Factura): void{
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: 'btn btn-success',
-        cancelButton: 'btn btn-danger'
-      },
-      buttonsStyling: false
-    });
 
-    swalWithBootstrapButtons.fire({
-      title: '¿Estas seguro?',
-      text: `¿Seguro que desea eliminar la factura ${factura.descripcion}?`,
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Si, eliminar!',
-      cancelButtonText: 'No, cancelar!',
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.facturaService.delete(factura.id).subscribe(
-          response => {
-            this.user.facturas = this.user.facturas.filter(f => f !== factura);
-            swalWithBootstrapButtons.fire(
-              'Factura Eliminada!',
-              `Factura ${factura.descripcion} eliminada con éxito.`,
-              'success'
-            );
-          }
-        );
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire(
-          'Cancelado',
-          `Factura ${factura.descripcion}  no ha sido eliminada.`,
-          'error'
-        );
-      }
-    });
   }
-}
+
 
 

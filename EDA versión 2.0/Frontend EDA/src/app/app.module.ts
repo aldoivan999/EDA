@@ -22,8 +22,6 @@ import { RoleGuard } from './usuarios/guards/role.guard';
 import { TokenInterceptor } from './usuarios/interceptors/token.interceptor';
 import { AuthInterceptor } from './usuarios/interceptors/auth.interceptor';
 import { ProveedorComponent } from './proveedor/proveedor.component';
-import { DetalleFacturaComponent } from './facturas/detalle-factura.component';
-import { FacturasComponent } from './facturas/facturas.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -35,8 +33,6 @@ import { ProductoComponent } from './producto/producto.component';
 import { DetalleProductoComponent } from './producto/detalle-producto/detalle-producto.component';
 import { PaginatorProductoComponent } from './producto/paginator-producto/paginator-producto.component';
 import { FormProductoComponent } from './producto/form-producto/form-producto.component';
-import { EntradaComponent } from './entrada/entrada.component';
-import { DetalleEntradaComponent } from './entrada/detalle/detalle-entrada.component';
 import { DetalleProveedorComponent } from './proveedor/detalleProveedor/detalle-proveedor.component';
 
 registerLocaleData(localeEs, 'es');
@@ -58,12 +54,6 @@ const routes: Routes = [
   {path: 'productos/form', component: FormProductoComponent, canActivate: [AuthGuard, RoleGuard], data:{role: 'ROLE_ADMIN'} },
   {path: 'productos/form/:id', component: FormProductoComponent, canActivate: [AuthGuard, RoleGuard], data:{role: 'ROLE_ADMIN'} },
 
-  {path: 'facturas/:id', component: DetalleFacturaComponent, canActivate: [AuthGuard, RoleGuard], data:{role: 'ROLE_ADMIN'}},
-  {path: 'facturas/form/:empleadoId', component: FacturasComponent, canActivate: [AuthGuard, RoleGuard], data:{role: 'ROLE_ADMIN'}},
-
-  {path: 'entradas/:id', component: DetalleEntradaComponent, canActivate: [AuthGuard, RoleGuard], data:{role: 'ROLE_ADMIN'}},
-  {path: 'entradas/form/:proveedorId', component: EntradaComponent, canActivate: [AuthGuard, RoleGuard], data:{role: 'ROLE_ADMIN'}},
-
   {path: 'login', component: LoginComponent}
 ];
 
@@ -80,14 +70,10 @@ const routes: Routes = [
     PaginatorProveComponent,
     DetalleComponent,
     LoginComponent,
-    DetalleFacturaComponent,
-    FacturasComponent,
     ProductoComponent,
     DetalleProductoComponent,
     PaginatorProductoComponent,
     FormProductoComponent,
-    EntradaComponent,
-    DetalleEntradaComponent,
     DetalleProveedorComponent
   ],
   imports: [

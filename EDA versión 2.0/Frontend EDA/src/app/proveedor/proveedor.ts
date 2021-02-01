@@ -1,5 +1,3 @@
-import {Producto} from '../facturas/models/producto';
-import {Entrada} from '../entrada/models/entrada';
 
 export class Proveedor {
   id: number;
@@ -17,5 +15,4 @@ export class Proveedor {
   text11: string;
   createAt: string;
   foto: string;
-  entradas: Entrada[] = [];
 }

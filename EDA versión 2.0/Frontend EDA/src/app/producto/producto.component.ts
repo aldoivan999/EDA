@@ -6,10 +6,6 @@ import {ProductoService} from './producto.service';
 import {ModalProductoService} from './detalle-producto/modal-producto.service';
 import {tap} from 'rxjs/operators';
 import Swal from "sweetalert2";
-import {ItemEntrada} from '../entrada/models/item-entrada';
-import {ItemFactura} from '../facturas/models/item-factura';
-import {Entrada} from '../entrada/models/entrada';
-import {Factura} from '../facturas/models/factura';
 import {URL_BACKEND} from '../config/config';
 
 @Component({
@@ -19,10 +15,6 @@ import {URL_BACKEND} from '../config/config';
 export class ProductoComponent implements OnInit {
 
   productos: Producto[];
-  entrada: Entrada;
-  factura : Factura;
-  itemEntrada: ItemEntrada;
-  itemFactura: ItemFactura;
   paginador: any;
   productoSeleccionado: Producto;
   urlBackend: string = URL_BACKEND;

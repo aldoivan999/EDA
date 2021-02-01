@@ -1,4 +1,4 @@
-import {Factura} from '../facturas/models/factura';
+
 
 export class User {
   id: number;
@@ -10,5 +10,4 @@ export class User {
   area: string;
   createAt: string;
   foto: string;
-  facturas: Factura[] = [];
 }
