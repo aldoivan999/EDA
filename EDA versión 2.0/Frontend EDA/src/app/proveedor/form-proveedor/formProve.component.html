@@ -1,0 +1,102 @@
+<div class="card bg-info text-white mb-3" style="max-width: 40rem;" >
+  <div class="card-header">{{title}}</div>
+  <div class="card-body">
+
+    <form>
+      <div class="form-group row">
+        <label for="nombre" class="col-form-label col-sm-2">Nombres</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="proveedor.nombre" name="nombre">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="email" class="col-form-label col-sm-2">Biometría hemática</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="proveedor.text" name="text">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="email" class="col-form-label col-sm-2">Quím. Sang. de 6 elementos</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="proveedor.text2" name="text2">
+        </div>
+      </div>
+
+     <div class="form-group row">
+        <label for="email" class="col-form-label col-sm-2">Prueba taxiológia</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="proveedor.text3" name="text3">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="email" class="col-form-label col-sm-2">Radiografía de tórax ap. y lat.</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="proveedor.text4" name="text4">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="email" class="col-form-label col-sm-2">Prueba rápida covid-19</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="proveedor.text5" name="text5">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="email" class="col-form-label col-sm-2">Examen médico de admisión</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="proveedor.text6" name="text6">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="email" class="col-form-label col-sm-2">Examen de agudeza</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="proveedor.text7" name="text7">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="email" class="col-form-label col-sm-2">Audiometría tonal</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="proveedor.text8" name="text8">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="email" class="col-form-label col-sm-2">Electrocardiograma</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="proveedor.text9" name="text9">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="email" class="col-form-label col-sm-2">Examen psicológico</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="proveedor.text10" name="text10">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="email" class="col-form-label col-sm-2">Tipo de sangre</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="proveedor.text11" name="text11">
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <button class="btn btn-primary" role="button" (click)='create()' *ngIf="!proveedor.id; else elseBlock">Crear</button>
+          <ng-template #elseBlock>
+            <button class="btn btn-primary" role="button" (click)='update()'>Editar</button>
+          </ng-template>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>
